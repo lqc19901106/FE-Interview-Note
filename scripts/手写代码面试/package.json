@@ -1,0 +1,15 @@
+{
+  "name": "interview",
+  "version": "0.0.1",
+  "description": "interview js code",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run text"
+  },
+  "keywords": [
+    "interiew",
+    "js"
+  ],
+  "author": "liuqichao",
+  "license": "MIT"
+}
