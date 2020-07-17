@@ -1,33 +1,27 @@
 https://www.jianshu.com/p/2975c25e4d71
 
-## 函数柯里化
+//函数柯里化
 
-### 一道面试题
-
-```
+/*
 // 实现一个add方法
 add(1,2,3) = 6;
 add(1)(2)(3) = 6;
 add(1,2,3)(4) = 10
+*/
 
-```
+//  主要作用
 
-### 主要作用
+//  参数复用
+//  提前返回 - 返回接受余下的参数且返回结果的新函数
+//  延迟执行 - 返回新函数,等待执行.
 
-> - 参数复用
-> - 提前返回 - 返回接受余下的参数且返回结果的新函数
-> - 延迟执行 - 返回新函数,等待执行.
 
-```javascript
-function curry(fn, args) {
-    var length = fn.length;
-    var args = args || [];
-    return function(){
-        newArgs = args.concat(Array.prototype.slice.call(arguments));
-        if (newArgs.length < length) {
-            return curry.call(this,fn,newArgs);
+function curry(fn) {
+    return function() {
+        if (arguments.length === fn.length) {
+            return curry.call(this, arguments);
         }else{
-            return fn.apply(this,newArgs);
+            return curry(arguments);
         }
     }
 }
@@ -36,7 +30,7 @@ function add(a, b, c) {
     return a + b + c;
 }
 
-var multi = curry(add);
+const multi = curry(add);
 
 multi(2)(3)(4);
 multi(2,3,4);

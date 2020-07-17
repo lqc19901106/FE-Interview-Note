@@ -19,6 +19,11 @@
 - 特性不同：GET请求是安全且幂等的（请求不会改变数据和服务器的状态）；POST请求是非安全非幂等的
 - **GET 产生一个 TCP 数据包；POST 产生两个 TCP 数据包**。
 
+> options 请求的的作用
+
+- 获取服务器支持的http方法
+- 检查服务器的性能
+
 > PUT和POST的区别
 
 PUT 和POST方法的区别是,PUT方法是幂等的：连续调用一次或者多次的效果相同（无副作用），而POST方法是非幂等的。
@@ -44,7 +49,7 @@ user = {
 
 - 浏览器在请求某一资源时，会先获取该资源缓存的header信息，判断是否命中强缓存（cache-control和expires信息），若命中直接从缓存中获取资源信息，包括缓存header信息，本次请求就不会与服务器进行通信。
 
-- 如果没有命中强缓存，浏览器会发送请求到服务器，请求会携带第一次返回的有关缓存的header字段信息（Last-Modifued/If-Modified-Since和Etag/If-None-Match），由服务器根据header信息来比对结果是否协商缓存命中。若命中，则服务器返回新的响应header信息更新缓存中的对应header信息，但是不返回资源内容，它会告知浏览器可以直接从缓存获取；否则返回最新的资源内容。
+- 如果没有命中强缓存，浏览器会发送请求到服务器，请求会携带第一次返回的有关缓存的header字段信息（Last-Modified/If-Modified-Since和Etag/If-None-Match），由服务器根据header信息来比对结果是否协商缓存命中。若命中，则服务器返回新的响应header信息更新缓存中的对应header信息，但是不返回资源内容，它会告知浏览器可以直接从缓存获取；否则返回最新的资源内容。
 
 > 强制缓存和协商缓存的区别
 
@@ -95,6 +100,16 @@ Content-Length: 32
 	....
 </html>
 ```
+
+常见的content-type
+
+application/x-www-form-urlencoded
+
+multipart/form-data （上传文件时使用）
+
+application/octet-stream ： 二进制流数据
+
+application/json： JSON数据格式
 
 ### 5. 状态码
 
@@ -210,4 +225,3 @@ https是安全版的http，因为http协议的数据都是明文进行传输的�
 - `Host` 头，能够使不同域名配置在同一个IP地址的服务器上。
 - 支持响应分块。
 - 增加流水线操作，允许在第一个应答被完全发送之前就发送第二个请求，以降低通信延迟。
-

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        .page {
+            display: flex;
+            overflow-x: hidden;
+            overflow-y: auto;
+            width: 100%;
+        }
+
+        .page-left {
+            width: 100px;
+            border: 1px solid red;
+        }
+
+        .page-main {
+            flex: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .page-header {
+            flex: 0 0 100px;
+            border: 1px solid blue;
+        }
+
+        .page-content {
+            flex: auto;
+            display: flex;
+        }
+
+        .page-center {
+            flex: auto;
+            border: 1px solid yellow;
+            text-align: center;
+        }
+
+        .list-item {
+            height: 200px;
+        }
+
+        .page-right {
+            width: 100px;
+            border: 1px solid green;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <div class="page-left">
+
+        </div>
+        <div class="page-main">
+            <div class="page-header"></div>
+            <div class="page-content">
+                <div class="page-center">
+                    <div class="list-item">
+                        dsfasdfas
+                    </div>
+                    <div class="list-item">
+                        dsfasdfas
+                    </div>
+                    <div class="list-item">
+                        dsfasdfas
+                    </div>
+                    <div class="list-item">
+                        dsfasdfas
+                    </div>
+                    <div class="list-item">
+                        dsfasdfas
+                    </div>
+                    <div class="list-item">
+                        dsfasdfas
+                    </div>
+                    <div class="list-item">
+                        dsfasdfas
+                    </div>
+                </div>
+                <div class="page-right"></div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

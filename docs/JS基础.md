@@ -43,11 +43,11 @@ console.log(i); //Uncaught ReferenceError: i is not defined
 
 Javascript中有三种作用域：
 
-1. 全局作用域；
-2. 函数作用域；
-3. 块级作用域；
+1. 全局作用域； window
+2. 函数作用域；函数内部
+3. 块级作用域；let和const
 
-## 作用域链
+### 作用域链
 
 当在Javascript中使用一个变量的时候，首先Javascript引擎会尝试在当前作用域下去寻找该变量，如果没找到，再到它的上层作用域寻找，以此类推直到找到该变量或是已经到了全局作用域。
 
@@ -55,7 +55,31 @@ Javascript中有三种作用域：
 
 ### this
 
-> 
+
+
+### 闭包
+
+> 闭包是指有权访问另外一个函数作用域中的变量的函数.可以理解为(**能够读取其他函数内部变量的函数**)
+
+```js
+for (var i = 0; i< 5; i++) {
+  setTimeout(function() {
+    console.log();
+  },0)
+}
+
+// 5,5,5,5,5
+
+//最少的修改方法： 将var 替换成 let
+//其他方法
+for (var i = 0; i< 5; i++) {
+  (function(){
+    setTimeout(function() {
+      console.log();
+    },0)
+  }(i)
+}
+```
 
 ## 执行上下文
 
@@ -99,7 +123,17 @@ Javascript中有三种作用域：
    3. 确定上下文中this的指向
 4. 代码执行阶段：**变量赋值，函数引用，执行代码**
 
-> ****函数声明先于变量声明****
+> **函数声明先于变量声明**
+
+#### 执行上下文栈
+
+> 存储函数调用的栈结构，先进后出
+
+1. js是单线程的的所有的代码都是自上而下的执行
+2. 开始执行时创建全局上下文，压入执行栈的顶部
+3. 函数执行时，创建函数执行上下文，压入执行栈的顶部，执行完成后出栈，等待GC
+4. JS总是访问栈顶的执行上下文
+5. 全局执行上下文在浏览器关闭时出栈
 
 ## 原型链
 
@@ -281,65 +315,7 @@ Children.prototype = new Person();
 
 > 通过原型链之间的指向关系进行委托关联
 
-## ES6
 
-### 1. let 和 const
-
-- var的声明会挂在到window上，let和const不会。
-- var声明存在变量提升；let、const不会。
-- let和const声明形成块作用域
-- 同一作用域下let和const不能声明同名变量，而var可以
-- 暂存死区
-
-```js
-var a = 100;
-if(1){
-    a = 10;
-    //在当前块作用域中存在a使用let/const声明的情况下，给a赋值10时，只会在当前作用域找变量a，
-    // 而这时，还未到声明时候，所以控制台Error:a is not defined
-    let a = 1;
-}
-```
-
-- const
-    - 一旦声明必须赋值,不能使用null占位。
-    - 声明后不能再修改
-    - 如果声明的是复合类型数据，可以修改其属性
-
-### 2. 箭头函数和普通函数的区别
-- 箭头函数是匿名函数，不能作为构造函数，不能使用new
-- 箭头函数不绑定arguments，取而代之用rest参数...解决
-- 箭头函数不绑定this，会捕获其所在的上下文的this值，作为自己的this值
-- 箭头函数通过 call()  或   apply() 方法调用一个函数时，只传入了一个参数，对 this 并没有影响。
-
-```js
-let obj2 = {
-    a: 10,
-    b: function(n) {
-        let f = (n) => n + this.a;
-        return f(n);
-    },
-    c: function(n) {
-        let f = (n) => n + this.a;
-        let m = {
-            a: 20
-        };
-        return f.call(m,n);
-    }
-};
-console.log(obj2.b(1));  // 11
-console.log(obj2.c(1));  // 11 调用了call函数也没有将this指向m对象
-```
-- 箭头函数没有原型属性
-- 箭头函数不能当做Generator函数,不能使用yield关键字
-
-> 箭头函数的 this 永远指向其上下文的  this ，任何方法都改变不了其指向，如 call() ,  bind() ,  apply() 
-
-### 3. `generator`
-
-### 4. class
-
-### 5. async/await、Promise
 
 ## 相关面试题
 
