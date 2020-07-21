@@ -8,6 +8,7 @@ Function.prototype.customCall = (context, ...args) {
     context[key](...args)
     delete context[key]
 }
+
 Function.prototype.customApply = (context, args) {
     context = (typeof context === 'object' ? context : window)
     // 防止覆盖掉原有属性
