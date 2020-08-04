@@ -36,7 +36,7 @@ for (let i = 0; i < 10; i++) {
 console.log(i);
 ```
 
-## 2. 箭头函数和普通函数的区别
+## 2. 函数
 
 - 箭头函数是匿名函数，不能作为构造函数，不能使用 new
 - 箭头函数不绑定 arguments，取而代之用 rest 参数...解决
@@ -87,7 +87,33 @@ console.log(obj2.c(1)); // 11 调用了call函数也没有将this指向m对象
 
 ## 10. class
 
+
 ## 11. Symbol
+
+- 新的数据类型 在原来 number、boolean、string，object，undefined, null
+- 最大的用法是用来定义对象的唯一属性名。
+
+> 注意点
+
+- Object.keys, Object.getOwnPropertyNames,for...in,for...of 不会遍历到 Symbol 的属性
+- 用 Object.getOwnPropertySymbols() 和 Reflect.ownKeys() 取到。
+
+```
+Symbol('kk') === Symbol('kk')  //false
+Symbol.for('kk') === Symbol('kk') // true
+
+//Symbol.for 根据key生成Symbol对象
+//Symbol.keyFor 根据Symbol对象查询key
+let yellow1 = Symbol.for("Yellow");
+Symbol.keyFor(yellow1);    // "Yellow"
+
+
+//用法
+let key = Symbol('key1');
+let obj ={
+  [key]: 'aa'
+}
+```
 
 ## 12. 对象扩展方法
 
@@ -180,6 +206,55 @@ var s = 123;
 var obj = {
     [s]: 'name'
 }
+```
 
+## 13 数组方法
 
 ```
+// Array.of 将所有参数生成数组
+Array.of(1,2,3,4)  //[1,2,3,4]
+
+// Array.from 将所有的可迭代对象转化为数组
+Array.from([1,2,3,4]);
+Array.from(new Set([1,2,3,4]));
+Array.from(new Map([1,2,3,4]));
+
+// .find
+// .findIndex
+
+// .fill  将一定范围索引的数组元素内容填充为单个指定的值
+
+let arr = Array.of(1, 2, 3, 4);
+// 参数1：用来填充的值
+// 参数2：被填充的起始索引
+// 参数3(可选)：被填充的结束索引，默认为数组末尾
+console.log(arr.fill(0,1,2)); // [1, 0, 3, 4]
+
+// .copyWithin 将一定范围的数组元素修改为此数组另一指定范围索引的元素
+// 参数1：被修改的起始索引
+// 参数2：被用来覆盖的数据的起始索引
+// 参数3(可选)：被用来覆盖的数据的结束索引，默认为数组末尾
+console.log([1, 2, 3, 4].copyWithin(0,2,4)); // [3, 4, 3, 4]
+
+// 参数1为负数表示倒数
+console.log([1, 2, 3, 4].copyWithin(-2, 0)); // [1, 2, 1, 2]
+
+console.log([1, 2, ,4].copyWithin(0, 2, 4)); // [, 4, , 4]
+
+// .includes // 是否包含指定值
+// .flat  //将多维数组转换成一维数组
+// .flatMap  //先处理在进行flat方法
+
+// .keys //返回数组的索引
+
+// .values  // 返回数组的值
+
+// .entries 遍历键值对。
+for(let [key, value] of ['a', 'b'].entries()){
+    console.log(key, value);
+}
+// 0 "a"
+// 1 "b"
+```
+
+## 14.
