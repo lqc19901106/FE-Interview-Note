@@ -81,12 +81,43 @@ console.log(obj2.c(1)); // 11 调用了call函数也没有将this指向m对象
 
 ## 7. Proxy 和 Reflect
 
+- Proxy 用于某些操作的默认行为
+
+```
+var obj = new Proxy({}, {
+  get: function (target, key, receiver) {
+    console.log(`getting ${key}!`);
+    return Reflect.get(target, key, receiver);
+  },
+  set: function (target, key, value, receiver) {
+    console.log(`setting ${key}!`);
+    return Reflect.set(target, key, value, receiver);
+  }
+});
+```
+
+- Reflect 将一些 Object 上的方法放到 Reflect 对象上
+
 ## 8. Set、Map
+
+- Set 类似数组所有的成员唯一
+- Map 类似与 Hash 的数据结构，所有的数据都是键值对的结构
+- WeakSet 只接收对象元素，不能遍历
+- WeakMap 只接收对象作为 key，不能遍历
+
+Set 方法：add 、clear 、constructor 、delete
+、entries 、forEach 、has 、keys
+、size 、values
+WeakSet 方法：add 、constructor 、delete 、has
+Map 方法：get，set、
+clear 、constructor 、delete 、entries
+、forEach 、get 、has 、keys
+、set 、size 、values
+WeakMap 方法：get、set、has、delete
 
 ## 9. decorator 装饰符
 
 ## 10. class
-
 
 ## 11. Symbol
 
