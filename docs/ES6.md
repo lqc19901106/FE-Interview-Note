@@ -94,9 +94,32 @@ var obj = new Proxy({}, {
     return Reflect.set(target, key, value, receiver);
   }
 });
+
+let queueEvent = new Set();
+function set(target,attr, value, receiver) {
+  queueEvent.forEach(fnItem => fnItem(target, key, value))
+  return Reflect.set(target, attr, value,receiver)
+}
+
+const observe = (fn) => queueEvents.add(fn);
+const observeble = (obj) => new Proxy(obj,{set})
 ```
 
 - Reflect 将一些 Object 上的方法放到 Reflect 对象上
+
+  > Reflect.apply(target,thisArg,args)
+  > Reflect.construct(target,args)
+  > Reflect.get(target,name,receiver)
+  > Reflect.set(target,name,value,receiver)
+  > Reflect.defineProperty(target,name,desc)
+  > Reflect.deleteProperty(target,name)
+  > Reflect.has(target,name)
+  > Reflect.ownKeys(target)
+  > Reflect.isExtensible(target)
+  > Reflect.preventExtensions(target)
+  > Reflect.getOwnPropertyDescriptor(target, name)
+  > Reflect.getPrototypeOf(target)
+  > Reflect.setPrototypeOf(target, prototype)
 
 ## 8. Set、Map
 

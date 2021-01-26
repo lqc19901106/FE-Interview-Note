@@ -145,7 +145,7 @@ for (var i = 0; i< 5; i++) {
 
 当调用某种方法或查找某种属性时，首先会在自身调用和查找，如果自身并没有该属性或方法，则会去它的 _ _ proto _ _属性中调用查找，也就是它构造函数的prototype中调用查找。
 
-![](/Users/liuqichao/Workspace/front-interview/img/原型链图.png)
+![](../img/原型链图.png)
 
 ## 事件循环（Event Loop）
 > 1、所有代码都要经过JS调用栈执行

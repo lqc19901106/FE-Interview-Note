@@ -225,3 +225,37 @@ https是安全版的http，因为http协议的数据都是明文进行传输的�
 - `Host` 头，能够使不同域名配置在同一个IP地址的服务器上。
 - 支持响应分块。
 - 增加流水线操作，允许在第一个应答被完全发送之前就发送第二个请求，以降低通信延迟。
+
+### 12. CORS 跨域请求
+
+  浏览器将cors 请求分为两类；简单请求和非简单请求（预检请求）
+
+**简单请求**
+
+- 请求方法时 是三种请求方法之一： GET、POST、PUT
+- HTTP 请求头字段不超出以下几种字段
+
+```
+Accept: *
+Accept-Language: ''
+Content-Type: 只限于三个值application/x-www-form-urlencoded、multipart/form-data、text/plain
+Content-Language
+```
+
+**cors 非简单请求 - 预检请求**
+
+非简单请求是那种对服务器有特殊要求的请求，比如请求方法是`PUT`或`DELETE`，或者`Content-Type`字段的类型是`application/json`。
+
+非简单请求的CORS请求，会在正式通信之前，增加一次HTTP查询请求，称为"预检"请求（preflight）。
+
+
+
+服务器收到"预检"请求以后，检查了`Origin`、`Access-Control-Request-Method`和`Access-Control-Request-Headers`字段以后，确认允许跨源请求，就可以做出回应。
+
+```
+Access-Control-Allow-Methods: GET, POST, PUT
+Access-Control-Allow-Headers: X-Custom-Header
+Access-Control-Allow-Credentials: true
+Access-Control-Max-Age: 1728000
+```
+

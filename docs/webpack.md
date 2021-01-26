@@ -59,4 +59,4 @@ ExampleWebpackPlugin.prototype.apply = function(compiler) {
 
 ### 编译执行流程
 
-<img src="/Users/liuqichao/Workspace/front-interview/img/webpack 流程.jpg" alt="webpack 流程" style="zoom:200%;" />
+![webpack 流程](../img/webpack 流程.jpg)
