@@ -22,7 +22,6 @@
  *  ARRAY
  *  UNIQUE
  *  OBJECT
- *  INT
  *
  *  CURRENTUSER 当前登录用户
  *  day() 当前日期  d w m y

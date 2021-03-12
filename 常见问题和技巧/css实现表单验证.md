@@ -12,7 +12,7 @@ input[type="text"]:invalid ~ input[type="submit"] {
 
 ```html
 <div class="form-css">
-	<input type="text"name="tel"placeholder="输入手机号码"pattern="^1[3456789]\d{9}$" required><br> 	<input type="text"name="smscode"placeholder="输入验证码"pattern="\d{4}"required><br>
+	<input type="text"name="tel"placeholder="输入手机号码" pattern="^1[3456789]\d{9}$" required><br> 	<input type="text"name="smscode"placeholder="输入验证码"pattern="\d{4}"required><br>
 	<input type="submit"></input>
 </div>
 ```

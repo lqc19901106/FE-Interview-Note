@@ -15,5 +15,6 @@ ssh 配置免密登录
 ````shell
 touch ~/.ssh/authorized_keys
 ssh-copy-id -i id_rsa.pub  user@192.168.110.4
+
 ````
 

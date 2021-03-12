@@ -1,3 +1,7 @@
+
+/**
+  清除浮动
+*/
 .clearfix:after{
     content: ' ';
     height: 0;
@@ -5,14 +9,3 @@
     visibility: hidden;
     clear: both;
 }
-
-.item{
-    flex: 0 0 auto;
-}
-/**
-*
-    flex: none | [<flex-grow><flex-shrink><flex-basis>];
-    flex-basis: 定义在分配多余空间之前，项目占据的主轴空间。
-    flex-shrink：定义项目的缩小比例
-    flex-grow：定义项目的放大比例
-*/
